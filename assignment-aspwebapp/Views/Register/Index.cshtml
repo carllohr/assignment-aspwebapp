@@ -1,0 +1,72 @@
+﻿@model assignment_aspwebapp.Models.Forms.RegisterForm;
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+<partial name="~/Views/Shared/Partials/_LoginHeader.cshtml" />
+
+<section class="registerform">
+    <div class="container">
+        <div class="form-container">
+            <p class="firsttext">Please Register Your new Account</p>
+            <form asp-action="Index" method="post" asp-route-ReturnUrl="@Model.ReturnUrl" class="form" enctype="multipart/form-data">
+                <div class="grid-fname">
+                    <label asp-for="FirstName">First Name*</label>
+                    <input asp-for="FirstName" type="text" class="inputtext">
+                    <span asp-validation-for="FirstName"></span>
+                </div>
+                <div class="grid-lname">
+                    <label asp-for="LastName">Last Name*</label>
+                    <input asp-for="LastName" type="text" class="inputtext">
+                    <span asp-validation-for="LastName"></span>
+                </div>
+                <div class="grid-sname">
+                    <label asp-for="StreetName">Street Name*</label>
+                    <input asp-for="StreetName" type="text" class="inputtext">
+                    <span asp-validation-for="StreetName"></span>
+                </div>
+                <div class="grid-pcode">
+                    <label asp-for="PostalCode">Postal Code*</label>
+                    <input asp-for="PostalCode" type="text" class="inputtext">
+                    <span asp-validation-for="PostalCode"></span>
+                </div>
+                <div class="grid-city">
+                    <label asp-for="City">City*</label>
+                    <input asp-for="City" type="text" class="inputtext">
+                </div>
+                <div class="grid-mobile">
+                    <label asp-for="PhoneNumber">Mobile(optional)</label>
+                    <input asp-for="PhoneNumber" type="text" class="inputtext">
+                </div>
+                <div class="grid-company">
+                    <label asp-for="Company">Company(optional)</label>
+                    <input asp-for="Company" type="text" class="inputtext">
+                </div>
+                <div class="grid-email">
+                    <label asp-for="Email">Email*</label>
+                    <input asp-for="Email" type="text" class="inputtext">
+                </div>
+                <div class="grid-password">
+                    <label asp-for="Password">Password*</label>
+                    <input asp-for="Password" type="password" class="inputtext">
+                </div>
+                <div class="grid-confirm">
+                    <label asp-for="ConfirmPassword">Confirm password*</label>
+                    <input asp-for="ConfirmPassword" type="password" class="inputtext">
+                </div>
+                <div class="grid-pic">
+                    <label asp-for="PicUrl">Upload profile picture(optional)</label>
+                    <input asp-for="PicUrl" accept="image/*">
+                </div>
+                <div class="grid-check">
+                    <input type="checkbox">
+                    <p>I have read and accept the terms and agreements</p>
+                </div>
+                <div class="grid-button">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

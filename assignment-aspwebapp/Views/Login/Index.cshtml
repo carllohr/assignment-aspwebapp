@@ -1,0 +1,38 @@
+﻿@model assignment_aspwebapp.Models.Forms.LoginForm;
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+<partial name="~/Views/Shared/Partials/_LoginHeader.cshtml" />
+
+<section class="loginform">
+      <div class="container">
+        <div class="form-container">
+            <form asp-action="Index" method="post" asp-route-ReturnUrl="@Model.ReturnUrl" class="form">
+            <p class="toptext">Please Login to your account</p>
+            <div class="logintext1">
+              <label asp-for="Email">Email*</label>
+              <a asp-controller="Register" asp-action="Index" class="p">
+                Don't have an account yet?
+              </a>
+            </div>
+            <input asp-for="Email" type="text" class="inputlogin">
+            <div class="logintext2">
+              <label asp-for="Password">Password*</label>
+              <a asp-controller="Forgot" asp-action="Index" class="p">
+                Forgot Password ?
+              </a>
+            </div>
+            <input asp-for="Password" type="password" class="inputlogin">
+            <div class="logincheck">
+              <input asp-for="KeepMeLoggedIn" type="checkbox">
+              <p>Please keep me logged in</p>
+            </div>
+            <div class="loginbutton">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>

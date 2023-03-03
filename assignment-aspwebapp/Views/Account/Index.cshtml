@@ -1,0 +1,63 @@
+﻿@model assignment_aspwebapp.Models.Identity.UserAccount;
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+<partial name="~/Views/Shared/Partials/_Header.cshtml" />
+
+<section class="accountview">
+    <div class="container">
+        <a asp-controller="Account" asp-action="LogOut">Sign out</a>
+        <div class="form-container">
+            <div class="accountimage">
+            <p class="firsttext">Your account</p> <img src="~/Images/profiles/@Model.ImageName" />
+            </div>
+            <form asp-controller="Account" method="post" asp-action="Index" class="form" enctype="multipart/form-data">
+                <div class="grid-email">
+                    <label asp-for="Email">Email*</label>
+                    <input asp-for="Email" class="inputtext" readonly>
+                </div>
+                <div class="grid-id">
+                    <label asp-for="Id">UserId</label>
+                    <input asp-for="Id" class="inputtext" readonly>
+                </div>
+                <div class="grid-fname">
+                    <label asp-for="FirstName">First Name*</label>
+                    <input asp-for="FirstName" type="text" class="inputtext">
+                </div>
+                <div class="grid-lname">
+                    <label asp-for="LastName">Last Name*</label>
+                    <input asp-for="LastName" type="text" class="inputtext">
+                </div>
+                <div class="grid-sname">
+                    <label asp-for="StreetName">Street Name*</label>
+                    <input asp-for="StreetName" type="text" class="inputtext">
+                </div>
+                <div class="grid-pcode">
+                    <label asp-for="PostalCode">Postal Code*</label>
+                    <input asp-for="PostalCode" type="text" class="inputtext">
+                </div>
+                <div class="grid-city">
+                    <label asp-for="City">City*</label>
+                    <input asp-for="City" type="text" class="inputtext">
+                </div>
+                <div class="grid-mobile">
+                    <label asp-for="PhoneNumber">Mobile(optional)</label>
+                    <input asp-for="PhoneNumber" type="text" class="inputtext">
+                </div>
+                <div class="grid-company">
+                    <label asp-for="Company">Company(optional)</label>
+                    <input asp-for="Company" type="text" class="inputtext">
+                </div>
+                <div class="grid-pic">
+                    <label asp-for="PicUrl">Upload profile picture(optional)</label>
+                    <input asp-for="PicUrl"  accept="image/*">
+                </div>
+                <div class="grid-button">
+                    <button>Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

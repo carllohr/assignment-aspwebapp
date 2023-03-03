@@ -1,0 +1,149 @@
+﻿@model Tuple<IEnumerable<ProductEntity>, ProductEntity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<partial name="~/Views/Shared/Partials/_Header.cshtml" />
+
+    <section class="productheader">
+      <div class="container">
+        <img src="https://via.placeholder.com/1920x300">
+        <div class="titles">
+          <div class="title-1">
+            <h2>HOME</h2>
+          </div>
+          <div class="title-2">
+            <h3>HOME. PRODUCT</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="productdetails">
+    <div class="container">
+        <div class="grid1">
+            <img src="~/Images/profiles/@Model.Item2.ImageName" alt="@Model.Item2.ImageAlt">
+            <div class="grid1-1">
+                <img src="~/Images/profiles/@Model.Item2.ImageName" alt="@Model.Item2.ImageAlt">
+                <img src="~/Images/profiles/@Model.Item2.ImageName" alt="@Model.Item2.ImageAlt">
+                <img src="~/Images/profiles/@Model.Item2.ImageName" alt="@Model.Item2.ImageAlt">
+                <img src="~/Images/profiles/@Model.Item2.ImageName" alt="@Model.Item2.ImageAlt">
+            </div>
+        </div>
+        <div class="grid2">
+            <h4>@Model.Item2.Name</h4>
+            <p>
+                @Model.Item2.LongDescription
+            </p>
+            <hr>
+            <div class="grid2-1">
+                <p class="stars">starstarstarstarstar</p>
+                <p>16 reviews</p>
+            </div>
+            <h3>$@Model.Item2.Price</h3>
+            <div class="grid2-2">
+                <button class="buttonnumber">-</button>
+                <input type="number" class="inputnumber" value="2">
+                <button class="buttonnumber">+</button>
+                <button class="buttoncart">
+                    Add to Cart
+                    <i class="fa-sharp fa-regular fa-rectangle-vertical fa-xs"></i>
+                </button>
+            </div>
+            <div class="grid2-3">
+                <button class="redbutton"></button>
+                <button class="yellowbutton"></button>
+                <button class="greenbutton"></button>
+                <p class="skuinfo">SKU: @Model.Item2.Id</p>
+            </div>
+            <button class="buttonwishlist">Add to wishlist</button>
+            <p class="categorytext">Category: @Model.Item2.Category</p>
+        </div>
+        <div class="grid3">
+            <button>DESCRIPTION</button>
+            <button>ADDITIONAL INFO</button>
+            <button>REVIEWS(0)</button>
+            <button>SHIPPING & DELIVERY</button>
+        </div>
+        <div class="grid4">
+            <h3>
+                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
+                molestie.
+            </h3>
+        </div>
+        <div class="grid5">
+            <div class="grid5-1">
+                <p>
+                    @Model.Item2.LongDescription
+                </p> <p>
+                    @Model.Item2.LongDescription
+                </p> <p>
+                    @Model.Item2.LongDescription
+                </p><p>
+                    @Model.Item2.LongDescription
+                </p>
+            </div>
+            <div class="grid5-2">
+                <img src="~/Images/profiles/@Model.Item2.ImageName" alt="@Model.Item2.ImageAlt">
+            </div>
+            <hr>
+        </div>
+    </div>
+</section>
+<section class="relatedproducts">
+    <div class="container">
+        <div>
+            <h3>Related Products</h3>
+        </div>
+        <div class="productimgs">
+            @foreach (var product in Model.Item1.Where(x => x.Tag == "Best Collection").Take(4)){
+                <div class="col">
+                    <div class="card">
+                        <div class="card-img-container">
+                            <img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <div class="price-container">
+                                @if (product.DiscountPrice != 0)
+                                {
+                                    <p class="card-price-line-through">$@product.Price</p>
+                                    <p class="card-sales-price">$@product.DiscountPrice</p>
+                                }
+                                else
+                                {
+                                    <p class="card-price">$@product.Price</p>
+                                }
+
+                                <a class="card-symbol"><i class="fa-sharp fa-regular fa-cart-plus"></i></a>
+                            </div>
+
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+    }
+        </div>
+    </div>
+</section>
+    <section class="carousel2">
+      <div class="container">
+        <div class="carousel-products">
+          <i class="fa-thin fa-square-arrow-left fa-2xl"></i>
+          @foreach(var product in Model.Item1.Take(5))
+          {
+               <div class="col4">
+                  <div class="card4">
+                    <div class="card4-img-container">
+                            <img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt">
+                    </div>
+                    </div>
+                    <hr>
+                  </div>
+          }
+        </div>
+          <i class="fa-thin fa-square-arrow-right fa-2xl"></i>
+        </div>
+    </section>
+
+          <partial name="~/Views/Shared/Partials/_Footer.cshtml" />

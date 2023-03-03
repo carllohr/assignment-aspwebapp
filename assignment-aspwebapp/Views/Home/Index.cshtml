@@ -1,0 +1,207 @@
+﻿@model IEnumerable<ProductEntity>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<partial name="~/Views/Shared/Partials/_Header.cshtml" />
+
+<section class="showcase">
+
+        <div class="container">
+            <div class="content">
+                <div class="titles">
+                    <p class="title-2">WELCOME TO BMERKETOSHOP</p>
+                    <p class="title-1">Exclusive Chair Gold Collection</p>
+                    <button class="btn btn-theme mt-4">SHOP NOW</button>
+                </div>            
+            </div>
+            <div class="imgshowcase"><img src="https://via.placeholder.com/625x647"></div>
+        </div>
+    </section>
+
+<section class="product-grid">
+    <div class="container">
+        <div class="title">
+            Best Collection
+            <div class="categories">
+                <a><p>All</p></a>
+                <p>/</p>
+                <a><p>Bags</p></a>
+                <p>/</p>
+                <a><p>Dress</p></a>
+                <p>/</p>
+                <a><p>Decoration</p></a>
+                <p>/</p>
+                <a><p>Essentials</p></a>
+                <p>/</p>
+                <a><p>Interior</p></a>
+                <p>/</p>
+                <a><p>Laptop</p></a>
+                <p>/</p>
+                <a><p>Mobile</p></a>
+                <p>/</p>
+                <a><p>Beauty</p></a>
+
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            @foreach (var product in Model.Where(x => x.Tag == "Best Collection"))
+            {
+                  <div class="col">
+        <div class="card">
+            <div class="card-img-container">
+                            <a asp-controller="Product" asp-action="Details" asp-route-Id="@product.Id"><img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt"></a>
+            </div>
+            <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <div class="price-container">
+                            @if(product.DiscountPrice != 0)
+                            {
+                                  <p class="card-price-line-through">$@product.Price</p>
+                                <p class="card-sales-price">$@product.DiscountPrice</p>
+                            }
+                            else
+                            {
+                                <p class="card-price">$@product.Price</p>
+                            }
+
+                            <a class="card-symbol"><i class="fa-sharp fa-regular fa-cart-plus"></i></a>
+                            </div>
+                
+            </div>
+            <hr>
+        </div>
+    </div>
+            }
+        </div>
+        <div class="loadmore">
+            <a class="loadmore-btn">LOAD MORE <i class="fa-solid fa-rotate-right fa-xs"></i></a>
+        </div>
+    </div>
+</section>
+<section class="discount">
+    
+    <div class="wrapper">
+        @foreach (var product in Model.Where(x => x.Tag == "Up to sell").Where(x => x.Name == "Table Lamp - scelerisque tempore"))
+    {
+         <div class="col2">
+        <div class="card2">
+            <div class="card2-img-container">
+                        <a asp-controller="Product" asp-action="Details" asp-route-Id="@product.Id"><img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt"></a>
+            </div>
+            <div class="card2-body">
+                <h5 class="card2-title">@product.Name</h5>
+                <div class="card2-prices">
+                <p class="card2-price">$@product.Price</p>
+                <p class="card2-price2">$@product.DiscountPrice</p>
+                            <p class="card2-symbol"><i class="fa-sharp fa-regular fa-cart-plus"></i></p>
+                </div>
+                
+            </div>
+            <hr>
+        </div>
+    </div>
+    }
+    <div class="content-container">
+            <div class="titles">
+            <p class="title-red">UP TO SELL</p>
+              <p class="title-1">50% OFF</p>
+              <p class="title-2">Get The Best Price</p>
+              <p class="title-3">
+                Get the best daily offer et accusam et justo duo dolores et ea
+                rebum.
+              </p>
+              <p class="title-discover">Discover More</p>
+            </div>
+    </div>
+        @foreach (var product in Model.Where(x => x.Tag == "Up to sell").Where(x => x.Name == "Table Lamp - scelerisque tempore"))
+        {
+           <div class="col2">
+                <div class="card2">
+                    <div class="card2-img-container">
+                        <a asp-controller="Product" asp-action="Details" asp-route-Id="@product.Id"><img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt"></a>
+                    </div>
+                    <div class="card2-body">
+                        <h5 class="card2-title">@product.Name</h5>
+                        <div class="card2-prices">
+                            <p class="card2-price">$@product.Price</p>
+                            <p class="card2-price2">$@product.DiscountPrice</p>
+                                        <p class="card2-symbol"><i class="fa-sharp fa-regular fa-cart-plus"></i></p>
+                        </div>
+
+                    </div>
+                    <hr>
+                </div>
+            </div>
+    }
+                      
+    </div>
+</section>
+
+    <section class="carousel">
+      <div class="carousel-wrapper">
+        <div class="title-carousel">
+          <p>Top selling products this week</p>
+        </div>
+        <div class="carousel-products">
+            @foreach (var product in Model.Where(x => x.Tag == "Best Collection").Take(6)){
+            <div class="col">
+      <div class="card">
+        <div class="card-img-container">
+                            <a asp-controller="Product" asp-action="Details" asp-route-Id="@product.Id"><img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt"></a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">@product.Name</h5>
+          <div class="price-container">
+            <p class="card-price-line-through">$@product.Price</p>
+            <p class="card-sales-price">$@product.DiscountPrice</p>
+            <p class="card-symbol"><i class="fa-sharp fa-regular fa-cart-plus"></i></p>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+            }
+        </div>
+        <div class="arrows">
+          <i class="fa-thin fa-square-arrow-left fa-2xl"></i>
+          <i class="fa-thin fa-square-arrow-right fa-2xl"></i>
+        </div>
+      </div>
+    </section>
+<section class="additionalproducts">
+    <div class="wrapper">
+        @foreach(var product in Model.Take(3)){
+            <div class="col2">
+        <div class="card3">
+            <div class="card2-img-container">
+                        <a asp-controller="Product" asp-action="Details" asp-route-Id="@product.Id"><img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt"></a>
+            </div>
+            <div class="card2-body">
+                <div><h5 class="card2-title">@product.Name</h5></div>
+                <div class="card3-info">@product.ShortDescription</div>
+                <div class="card3-underinfo">
+                <p class="card3-admin">POST BY ADMIN</p>
+                <p class="card3-comments">COMMENTS 13</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    }
+    </div>
+</section>
+<section class="subscribe">
+    <div class="contain">
+        <div class="subbox">
+            <div class="inputfield">
+                <input type="text" placeholder="Enter email" class="emailinput">
+                <button class="subbutton">SUBSCRIBE FOR NEWSLETTER</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partial name="~/Views/Shared/Partials/_Footer.cshtml" />
