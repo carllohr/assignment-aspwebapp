@@ -29,9 +29,12 @@
 
                             <div class="editbuttons"><button>Add to cart</button>@if (User.IsInRole("Administrator") || User.IsInRole("Product Manager"))
                                 {
-                                    <button>Delete</button>
+                                    <form asp-action="Delete" asp-route-Id="@product.Id" method="post">
+                                    <button type="submit">Delete</button>
+                                            </form>
 
-                                    <button>Edit</button>
+
+                                    <button><a asp-action="EditProduct" asp-route-id="@product.Id">Edit</a></button>
                                 }
                             </div>
 

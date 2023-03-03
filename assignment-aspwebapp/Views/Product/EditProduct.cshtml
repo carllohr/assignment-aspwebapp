@@ -1,0 +1,62 @@
+﻿@model ProductEntity
+
+@{
+    ViewData["Title"] = "Create Product";
+
+}
+<partial name="~/Views/Shared/Partials/_Header.cshtml" />
+
+<section class="registerform">
+    <div class="container">
+        <div class="form-container">
+            <p class="firsttext">Create a new product</p>
+            <form asp-controller="Product" asp-action="EditProduct" method="post" class="form" enctype="multipart/form-data">
+                <div class="grid-fname">
+                    <label asp-for="Name">Name*</label>
+                    <input asp-for="Name" value="@Model.Name" type="text" class="inputtext">
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div class="grid-lname">
+                    <label asp-for="ShortDescription">Short Description*</label>
+                    <input asp-for="ShortDescription" type="text" class="inputtext">
+                    <span asp-validation-for="ShortDescription"></span>
+                </div>
+                <div class="grid-sname">
+                    <label asp-for="LongDescription">Long Description</label>
+                    <input asp-for="LongDescription" type="text" class="inputtext">
+                    <span asp-validation-for="LongDescription"></span>
+                </div>
+                <div class="grid-pcode">
+                    <label asp-for="Price">Price*</label>
+                    <input asp-for="Price" type="text" class="inputtext">
+                    <span asp-validation-for="Price"></span>
+                </div>
+                <div class="grid-city">
+                    <label asp-for="Category">Category*</label>
+                    <input asp-for="Category" type="text" class="inputtext">
+                </div>
+                <div class="grid-mobile">
+                    <label asp-for="Tag">Tag</label>
+                    <input asp-for="Tag" type="text" class="inputtext">
+                </div>
+                <div class="grid-company">
+                    <label asp-for="ImageAlt">Alternative image text</label>
+                    <input asp-for="ImageAlt" type="text" class="inputtext">
+                </div>
+                <div class="grid-button">
+                    <label asp-for="DiscountPrice">Discount Price</label>
+                    <input asp-for="DiscountPrice" type="text" class="inputtext">
+                </div>
+                <div class="grid-pic">
+                    <label asp-for="ImageName">Upload product picture</label>
+                    <input asp-for="ImageName" accept="image/*">
+                </div>
+                <div class="grid-button">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<partial name="~/Views/Shared/Partials/_Footer.cshtml" />

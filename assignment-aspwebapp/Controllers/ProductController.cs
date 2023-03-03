@@ -48,5 +48,24 @@ namespace assignment_aspwebapp.Controllers
             var tuple = new Tuple<IEnumerable<ProductEntity>, ProductEntity>(products, product);
             return View(tuple);
         }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+           var result = await _productService.DeleteAsync(id);
+
+            if (result)
+            {
+                return RedirectToAction("Index", "Product");
+            }
+
+            return new BadRequestResult();
+
+        }
+
+        public async Task<IActionResult> EditProduct(string id)
+        {
+            var product = await _productService.GetByIdAsync(id);
+            return View(product);
+        }
     }
 }
