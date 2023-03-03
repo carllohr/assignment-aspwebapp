@@ -95,11 +95,10 @@ namespace assignment_aspwebapp.Services
             try
             {
                 var identityUser = await _userManager.FindByIdAsync(id);
-                var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(x => x.Id.ToString() == id);
                 await _userManager.DeleteAsync(identityUser!);
-                _context.UserProfiles.Remove(userProfile);
+                
                 return true;
-            } catch (Exception ex) { return false; }
+            } catch { return false; }
         }
         public async Task<UserAccount> GetUserAccountAsync(string userName)
         {

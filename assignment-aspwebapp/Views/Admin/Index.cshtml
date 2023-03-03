@@ -16,7 +16,13 @@
           <div class="user">
             <p>@user.Email</p>
             <p>@user.Id</p>
-                <div class="editbuttons"><button><a asp-action="EditUserInfo" asp-route-Id="@user.Id">Edit user</a></button><button><a asp-action="ManageUserRole" asp-route-userId="@user.Id">Manage account role</a></button><button><a asp-action="Delete" asp-route-userId="@user.Id">Delete </a></button></div>
+            <form asp-controller="Admin" asp-action="Delete" method="post" asp-route-Id="@user.Id">
+                <div class="editbuttons">
+                    <button><a asp-action="EditUserInfo" asp-route-Id="@user.Id">Edit user</a></button>
+                    <button><a asp-action="ManageUserRole" asp-route-userId="@user.Id">Manage account role</a></button>
+                    <button type="submit">Delete</button>
+                </div>
+                </form>
           </div>
           }
         </div>

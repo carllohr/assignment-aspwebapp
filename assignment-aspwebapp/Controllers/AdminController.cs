@@ -200,7 +200,7 @@ namespace assignment_aspwebapp.Controllers
             var result = await _userService.DeleteAsync(id);
             if (result)
             {
-                return new OkResult();
+                return RedirectToAction("Index", "Admin");
             }
 
             return new BadRequestResult();
