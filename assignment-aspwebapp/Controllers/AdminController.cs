@@ -126,7 +126,7 @@ namespace assignment_aspwebapp.Controllers
         }
 
         
-        public async Task<IActionResult> ManageUserRole(string userId)
+        public async Task<IActionResult> ManageUserRole(string userId) //view for managing account roles for selected user
         {
             ViewBag.userId = userId;
             var user = await _userManager.FindByIdAsync(userId);
@@ -162,7 +162,7 @@ namespace assignment_aspwebapp.Controllers
             return View(user);
         }
         [HttpPost]
-        public async Task<IActionResult> ManageUserRole(List<UserRoleModel> model, string userId)
+        public async Task<IActionResult> ManageUserRole(List<UserRoleModel> model, string userId) // change roles for an account by getting user id and removing from existing roles, adding to selected roles
         {
             var user = await _userManager.FindByIdAsync(userId);
 

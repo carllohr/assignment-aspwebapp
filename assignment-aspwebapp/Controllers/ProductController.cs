@@ -1,6 +1,7 @@
 ﻿using assignment_aspwebapp.Models.Entities;
 using assignment_aspwebapp.Models.Forms;
 using assignment_aspwebapp.Services;
+using assignment_aspwebapp.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -64,7 +65,23 @@ namespace assignment_aspwebapp.Controllers
 
         public async Task<IActionResult> EditProduct(string id)
         {
-            var product = await _productService.GetByIdAsync(id);
+            var product = await _productService.GetProductDataAsync(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditProduct(ProductViewModel product)
+        {
+            if (ModelState.IsValid)
+            {
+               var result = await _productService.UpdateProductAsync(product);
+                if(result is OkResult)
+                {
+                    return RedirectToAction("Index", "Product");
+                }
+                return new BadRequestResult();
+            }
+
             return View(product);
         }
     }

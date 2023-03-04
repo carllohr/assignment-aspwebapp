@@ -13,17 +13,17 @@
         
         @foreach (var product in Model)
         {
-            <div className="col4">
-              <div className="card4">
-                <div className="card4-img-container">
+            <div class="col4">
+              <div class="card4">
+                <div class="card4-img-container">
                             <a asp-controller="Product" asp-action="Details" asp-route-Id="@product.Id"><img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt"></a>
                 </div>
-                <div className="card4-body">
+                <div class="card4-body">
                   <div>
-                    <h5 className="card4-title">@product.Name</h5>
+                    <h5 class="card4-title">@product.Name</h5>
                   </div>
-                  <div className="prices">
-                    <p className="card4-price">@product.Price</p>
+                  <div class="prices">
+                    <p class="card4-price">@product.Price</p>
                   </div>
 
 
@@ -31,18 +31,16 @@
                                 {
                                     <form asp-action="Delete" asp-route-Id="@product.Id" method="post">
                                     <button type="submit">Delete</button>
-                                            </form>
+                                    </form>
 
 
                                     <button><a asp-action="EditProduct" asp-route-id="@product.Id">Edit</a></button>
                                 }
                             </div>
-
                 </div>
                 <hr>
               </div>
             </div>
-            @*@<img src="~/Images/profiles/@product.ImageName" alt="@product.ImageAlt">*@
             }
         
         </div>

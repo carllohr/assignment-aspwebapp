@@ -1,4 +1,4 @@
-﻿@model ProductEntity
+﻿@model ProductViewModel
 
 @{
     ViewData["Title"] = "Create Product";
@@ -13,7 +13,7 @@
             <form asp-controller="Product" asp-action="EditProduct" method="post" class="form" enctype="multipart/form-data">
                 <div class="grid-fname">
                     <label asp-for="Name">Name*</label>
-                    <input asp-for="Name" value="@Model.Name" type="text" class="inputtext">
+                    <input asp-for="Name" type="text" class="inputtext">
                     <span asp-validation-for="Name"></span>
                 </div>
                 <div class="grid-lname">
@@ -48,11 +48,11 @@
                     <input asp-for="DiscountPrice" type="text" class="inputtext">
                 </div>
                 <div class="grid-pic">
-                    <label asp-for="ImageName">Upload product picture</label>
-                    <input asp-for="ImageName" accept="image/*">
+                    <label asp-for="PicUrl">Upload product picture</label>
+                    <input asp-for="PicUrl" accept="image/*">
                 </div>
                 <div class="grid-button">
-                    <button type="submit">Submit</button>
+                    <button type="submit">Update information</button>
                 </div>
             </form>
         </div>
