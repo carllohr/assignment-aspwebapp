@@ -33,12 +33,12 @@ namespace assignment_aspwebapp.Controllers
         public async Task<IActionResult> Create(ProductForm form) // creates product by taking in productform values from input;
         {
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && form.PicUrl != null)
             {
                 await _productService.CreateAsync(form);
                 return LocalRedirect("~/");
             }
-            ModelState.AddModelError("", "Could not add product");
+            ModelState.AddModelError("", "Could not add product. Make sure all the required information is filled in and a picture is attached.");
             return View(form);
         }
 
@@ -69,7 +69,7 @@ namespace assignment_aspwebapp.Controllers
             var product = await _productService.GetProductDataAsync(id);
             return View(product);
         }
-        [Authorize(Roles = "Administrator, Product Manager")]
+
         [HttpPost]
         public async Task<IActionResult> EditProduct(ProductViewModel product)
         {
