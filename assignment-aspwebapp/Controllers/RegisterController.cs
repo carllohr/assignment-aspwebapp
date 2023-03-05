@@ -31,20 +31,23 @@ namespace assignment_aspwebapp.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(RegisterForm form)
         {
-
-            if (ModelState.IsValid)
+            if (form.TermsAndService != false)
             {
-                if (await _userManager.Users.AnyAsync(x => x.Email == form.Email))
+                if (ModelState.IsValid)
                 {
-                    ModelState.AddModelError(string.Empty, "A user with input email already exists");
-                    return View(form);
+                    if (await _userManager.Users.AnyAsync(x => x.Email == form.Email))
+                    {
+                        ModelState.AddModelError(string.Empty, "A user with input email already exists");
+                        return View(form);
+                    }
+
+                    if (await _authService.RegisterAsync(form))
+                        return LocalRedirect(form.ReturnUrl!);
+                    else
+                        return View(form);
                 }
-                  
-                if (await _authService.RegisterAsync(form))
-                    return LocalRedirect(form.ReturnUrl!);
-                else
-                    return View(form);
             }
+            else { ModelState.AddModelError("TermsAndService", " ! * Please accept the terms and service to sign up * ! "); }
 
             return View(form);
             

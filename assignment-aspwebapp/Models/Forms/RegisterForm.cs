@@ -16,6 +16,6 @@
         public string City { get; set; } = null!;
         public string PostalCode { get; set; } = null!;
         public IFormFile? PicUrl { get; set; }
-
+        public bool TermsAndService { get; set; } = false;
     }
 }

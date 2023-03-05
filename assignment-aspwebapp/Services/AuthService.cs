@@ -61,6 +61,10 @@ namespace assignment_aspwebapp.Services
 
         public async Task<bool> LoginAsync(LoginForm form, bool keepMeLoggedIn = false)
         {
+            if(form.KeepMeLoggedIn == true)
+            {
+                keepMeLoggedIn = true;
+            }
             var result = await _signInManager.PasswordSignInAsync(form.Email, form.Password, keepMeLoggedIn, false);
             return result.Succeeded;
 

@@ -60,8 +60,13 @@
                     <input asp-for="PicUrl" accept="image/*">
                 </div>
                 <div class="grid-check">
-                    <input type="checkbox">
-                    <p>I have read and accept the terms and agreements</p>
+                    <input asp-for="TermsAndService" type="checkbox">
+                    <label asp-for="TermsAndService">I have read and accept the terms and agreements</label>
+                    <br />
+            
+                </div>
+                <div>
+                    <span asp-validation-for="TermsAndService"></span>
                 </div>
                 <div class="grid-button">
                     <button type="submit">Submit</button>

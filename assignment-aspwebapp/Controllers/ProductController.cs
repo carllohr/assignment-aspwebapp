@@ -49,7 +49,7 @@ namespace assignment_aspwebapp.Controllers
             var tuple = new Tuple<IEnumerable<ProductEntity>, ProductEntity>(products, product);
             return View(tuple);
         }
-
+        [Authorize(Roles = "Administrator, Product Manager")]
         public async Task<IActionResult> Delete(string id)
         {
            var result = await _productService.DeleteAsync(id);
@@ -62,13 +62,14 @@ namespace assignment_aspwebapp.Controllers
             return new BadRequestResult();
 
         }
+        [Authorize(Roles = "Administrator, Product Manager")]
 
         public async Task<IActionResult> EditProduct(string id)
         {
             var product = await _productService.GetProductDataAsync(id);
             return View(product);
         }
-
+        [Authorize(Roles = "Administrator, Product Manager")]
         [HttpPost]
         public async Task<IActionResult> EditProduct(ProductViewModel product)
         {

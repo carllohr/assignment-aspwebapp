@@ -923,6 +923,7 @@ a {
         .productdetails .container .grid5 .grid5-1 {
             grid-area: description-box;
             margin-right: 50px;
+            flex-grow: 1;
         }
 
         .productdetails .container .grid5 .grid5-2 {
