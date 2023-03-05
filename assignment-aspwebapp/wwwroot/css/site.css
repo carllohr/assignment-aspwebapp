@@ -1673,13 +1673,26 @@ a {
 
     .adminview .container .user {
         border: 1px solid gray;
-        width: 300px;
+        width: 400px;
+        height: auto;
     }
 
         .adminview .container .user .editbuttons {
             display: flex;
             justify-content: space-between;
         }
+
+            .adminview .container .user .editbuttons button {
+                width: 100px;
+                background-color: rgb(255, 67, 67);
+                color: white;
+                border: 1px solid gray;
+            }
+
+            .adminview .container .user .editbuttons a {
+                color: white;
+                text-decoration: none;
+            }
 
 .managerolesview .card {
     display: flex;
