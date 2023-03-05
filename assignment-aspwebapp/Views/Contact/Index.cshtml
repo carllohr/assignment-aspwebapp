@@ -1,7 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model assignment_aspwebapp.Models.Forms.ContactForm;
 @{
+    ViewData["Title"] = "Index";
+
 }
 
 <partial name="~/Views/Shared/Partials/_Header.cshtml" />
@@ -22,25 +22,25 @@
     <div class="container">
         <div class="form-container">
             <p class="firsttext">Write something</p>
-            <div class="form">
+            <form class="form" asp-action="Index" method="post">
                 <div class="grid-name">
-                    <label htmlFor="Name">Your Name*</label>
+                    <label asp-for="Name">Your Name*</label>
                     <input type="text" class="inputtext">
                 </div>
                 <div class="grid-email">
-                    <label htmlFor="Email">Your Email*</label>
+                    <label asp-for="Email">Your Email*</label>
                     <input type="text" class="inputtext">
                 </div>
                 <div class="grid-phone">
-                    <label htmlFor="Email">Phone number</label>
+                    <label asp-for="Email">Phone number</label>
                     <input type="text" class="inputtext">
                 </div>
                 <div class="grid-company">
-                    <label htmlFor="Email">Company(optional)</label>
+                    <label asp-for="Email">Company(optional)</label>
                     <input type="text" class="inputtext">
                 </div>
                 <div class="grid-something">
-                    <label htmlFor="Message">Something write*</label>
+                    <label asp-for="Message">Something write*</label>
                     <input type="text" class="inputtext2">
                 </div>
                 <div class="grid-check">
@@ -51,9 +51,9 @@
                     </p>
                 </div>
                 <div class="grid-button">
-                    <button>Submit</button>
+                    <button type="submit">Submit</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>

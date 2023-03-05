@@ -13,7 +13,7 @@ namespace assignment_aspwebapp.Controllers
         [HttpPost]
         public IActionResult Index(ContactForm form)
         {
-            return View();
+            return View(form);
         }
     }
 }
